@@ -12,6 +12,16 @@ print("rock, paper or scissors?")
 guess = input()
 os.system("CLS")
 
+
+
+# 
+while not guess in options:
+    print("Please choose rock, paper or scissors")
+    guess = input()
+
+computer = math.floor(random.random()*len(options))
+computer = options[computer]
+
 # Rock, paper, scissors! (countdown)
 time.sleep(1)
 print("Rock, ")
@@ -22,14 +32,6 @@ print("Scissors")
 time.sleep(1)
 os.system("CLS")
 print("Shoot!\n")
-
-# 
-while not guess in options:
-    print("Please choose rock, paper or scissors")
-    guess = input()
-
-computer = math.floor(random.random()*len(options))
-computer = options[computer]
 
 # Rock
 if guess == "rock":
