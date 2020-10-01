@@ -1,7 +1,6 @@
 try:
     import random
     import math
-    import time
     import pyttsx3
     #changing voice to girl
     engine = pyttsx3.init()
@@ -19,16 +18,10 @@ try:
     computer = options[math.floor(random.random()*len(options))]
 
     # Rock, paper, scissors! (countdown)
-    time.sleep(1)
-    pyttsx3.speak("Rock")
     print("Rock, ")
-    # time.sleep(1)
-    pyttsx3.speak("Paper")
     print("Paper, ")
-    # time.sleep(1)
-    pyttsx3.speak("Scissor")
     print("Scissors")
-    # time.sleep(1)
+    pyttsx3.speak("Rock, Paper, Scissor")
     print("Shoot!\n")
     pyttsx3.speak("Shoot")
     # Rock
