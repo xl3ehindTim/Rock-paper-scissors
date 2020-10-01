@@ -1,62 +1,77 @@
-import random
-import os
-import math
-import time
+try:
+    import random
+    import math
+    import time
+    import pyttsx3
+    #changing voice to girl
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')       #getting details of current voice
+    #engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
+    engine.setProperty('voice', voices[1].id)
+    # Computer options
+    options = ["rock", "paper", "scissors"]
+    # User input
+    guess = input("rock, paper or scissors?\n")
+    while not guess in options:
+        print("Please choose rock, paper or scissors")
+        guess = input()
 
-# Computer options
-options = ["rock", "paper", "scissors"]
-os.system("cls | clear")
+    computer = options[math.floor(random.random()*len(options))]
 
-# User input
-guess = input("rock, paper or scissors?\n")
-os.system("cls | clear")
+    # Rock, paper, scissors! (countdown)
+    time.sleep(1)
+    pyttsx3.speak("Rock")
+    print("Rock, ")
+    # time.sleep(1)
+    pyttsx3.speak("Paper")
+    print("Paper, ")
+    # time.sleep(1)
+    pyttsx3.speak("Scissor")
+    print("Scissors")
+    # time.sleep(1)
+    print("Shoot!\n")
+    pyttsx3.speak("Shoot")
+    # Rock
+    if guess == "rock":
+        if computer == "rock":
+            print("Draw!")
+            pyttsx3.speak("Draw")
 
-while not guess in options:
-    print("Please choose rock, paper or scissors")
-    guess = input()
+        elif computer == "paper":
+            print("Rock looses to paper, you loose!")
+            pyttsx3.speak("Rock looses to paper, you loose!")
 
-computer = options[math.floor(random.random()*len(options))]
+        else:
+            print("Rock beats scissors, you win!")
+            pyttsx3.speak("Rock beats scissors, you win!")
+    # Paper
+    elif guess == "paper":
+        if computer == "rock":
+            print("Paper beats rock, you win!")
+            pyttsx3.speak("Paper beats rock, you win!")
+        
+        elif computer == "paper":
+            print("Draw!")
+            pyttsx3.speak("Draw!")
 
-# Rock, paper, scissors! (countdown)
-time.sleep(1)
-print("Rock, ")
-time.sleep(1)
-print("Paper, ")
-time.sleep(1)
-print("Scissors")
-time.sleep(1)
-os.system("cls | clear")
-print("Shoot!\n")
+        else:
+            print("Paper loses to scissors, you loose!")
+            pyttsx3.speak("Paper loses to scissors, you loose!")
 
-# Rock
-if guess == "rock":
-    if computer == "rock":
-        print("Draw!")
-
-    elif computer == "paper":
-        print("Rock looses to paper, you loose!")
-
+    # Scissors
     else:
-        print("Rock beats scissors, you win!")
+        if computer == "rock":
+            print("Scissors looses to rock, you loose!")
+            pyttsx3.speak("Scissors looses to rock, you loose!")
 
-# Paper
-elif guess == "paper":
-    if computer == "rock":
-        print("Paper beats rock, you win!")
-    
-    elif computer == "paper":
-        print("Draw!")
+        elif computer == "paper":
+            print("Scissors beats paper, you win!")
+            pyttsx3.speak("Scissors beats paper, you win!")
 
-    else:
-        print("Paper loses to scissors, you loose!")
+        else:
+            print("Draw!")
+            pyttsx3.speak("Draw")
 
-# Scissors
-else:
-    if computer == "rock":
-        print("Scissors looses to rock, you loose!")
-
-    elif computer == "paper":
-        print("Scissors beats paper, you win!")
-
-    else:
-        print("Draw!")
+except:
+    print("Enter the correct spelling")
+    pyttsx3.speak("Enter the correct spelling")
